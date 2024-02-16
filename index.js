@@ -31,17 +31,44 @@ button.addEventListener("click", function () {
     if (totalPrice >= 200) {
         if (promoCode === "SELL2020") {
             const total = totalPrice - totalPrice * 20 / 100;
-            const discount = totalPrice - total ;
-             getElementById("discountPrice").innerText = discount.toFixed(2);
-             getElementById("total").innerText = total.toFixed(2);      
+            const discount = totalPrice - total;
+            getElementById("discountPrice").innerText = discount.toFixed(2);
+            getElementById("total").innerText = total.toFixed(2);
+            getElementById("input-field").value = " ";
 
         } else {
             alert("Your promo code is not valid!");
+            getElementById("input-field").value = " ";
         }
 
     } else {
         alert("not allowed discount!");
+        getElementById("input-field").value = " ";
+    }
+});
+
+
+const welcomeMassage = () => {
+    if (totalPrice === 0) {
+        alert("please buy the product");
+    }
+    else {
+        getElementById("display").classList.remove("hidden");
+        getElementById("main").classList.add("hidden");
+        getElementById("header").classList.add("hidden");
     }
 
+}
 
-})
+const goHome = () => {
+    getElementById("display").classList.add("hidden");
+    getElementById("main").classList.remove("hidden");
+    getElementById("header").classList.remove("hidden");
+    // reset
+    getElementById("discountPrice").innerText = '';
+    getElementById("total").innerText = '';
+    getElementById("totalPrice").innerText = '';
+    getElementById("input-field").value = " ";
+    getElementById("title-container").innerText = " ";
+    titleCount = 1;
+}
